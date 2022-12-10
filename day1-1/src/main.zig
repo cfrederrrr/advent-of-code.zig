@@ -51,11 +51,15 @@ pub fn main() !void {
 
     var it = U8LineIterator.init(file_buffer);
     while (it.next()) |line| {
-        if (line.len == 0 or it.finished()) {
+        if (it.finished()) {
+            elf += try std.fmt.parseUnsigned(usize, line, 10);
             if (elf > most) most = elf;
             elf = 0;
-        } else {
+        } else if (line.len != 0) {
             elf += try std.fmt.parseUnsigned(usize, line, 10);
+        } else if (line.len == 0) {
+            if (elf > most) most = elf;
+            elf = 0;
         }
     }
 
