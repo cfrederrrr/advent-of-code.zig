@@ -70,15 +70,11 @@ const MatchTokenizer = struct {
 pub fn main() !void {
     const stdout = std.io.getStdOut().writer();
     var data = input[0..].*;
-    // std.debug.print("{s}", .{@typeName(@TypeOf(data))});
 
     var it = MatchTokenizer.init(&data);
 
     var score: usize = 0;
-    while (it.next()) |match| {
-        // std.debug.print("{d} => {c}\n", .{it.idx, it.buf[it.idx]});
-        score += match;
-    }
+    while (it.next()) |match| score += match;
 
     _ = try stdout.print("{d}", .{score});
 }
