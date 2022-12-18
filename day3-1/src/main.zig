@@ -68,7 +68,7 @@ const Rucksack = struct {
             rightchars.rewind();
         }
 
-        std.debug.print("{c} {d}\t {s} {s}\n", .{shared, priority(shared), self.left, self.right});
+        std.debug.print("{c} {d}\t {s} {s}\n", .{ shared, priority(shared), self.left, self.right });
         return shared;
     }
 };
@@ -111,8 +111,8 @@ const RucksackTokenizer = struct {
         if (!self.finished()) self.idx += 1;
 
         // return a Rucksack
-        var left = contents[0..(contents.len/2)];
-        var right = contents[(contents.len/2)..];
+        var left = contents[0..(contents.len / 2)];
+        var right = contents[(contents.len / 2)..];
         return Rucksack.init(left, right);
     }
 
@@ -136,20 +136,6 @@ pub fn main() !void {
         var shared = try sack.sharedContents();
         total += priority(shared);
     }
-    // while (it.next()) |sack| {
-
-    //     std.debug.print("starting sack {d}\n", .{counter});
-    //     var shared = try sack.sharedContents();
-    //     std.debug.print("shared {d} = {s}\n", .{counter, shared});
-    //     std.debug.print("finished sack {d}\n", .{counter});
-    //     // std.debug.print("{s}", .{shared});
-    //     // for (shared) |item| {
-    //     //     var prio = priority(item);
-    //     //     total += prio;
-    //     // }
-
-    //     counter += 1;
-    // }
 
     _ = try stdout.print("{d}", .{total});
 }
