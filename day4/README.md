@@ -47,8 +47,6 @@ Some of the pairs have noticed that one of their assignments _fully contains_ 
 
 _In how many assignment pairs does one range fully contain the other?_
 
-The first half of this puzzle is complete! It provides one gold star: *
-
 ## --- Part Two ---
 
 It seems like there is still quite a bit of duplicate work planned. Instead, the Elves would like to know the number of pairs that _overlap at all_.
